@@ -3,13 +3,13 @@ import { CommonModule } from '@angular/common';
 import { Country } from '@hotel-reservations/countries/data-access';
 
 @Component({
-  selector: 'country-card',
+  selector: 'card-row',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './country-card.component.html',
-  styleUrl: './country-card.component.scss',
+  templateUrl: './card-row.component.html',
+  styleUrl: './card-row.component.scss',
 })
-export class CountryCardComponent {
+export class CardRowComponent {
   @Input() country!: Country;
   protected readonly Math = Math;
 }

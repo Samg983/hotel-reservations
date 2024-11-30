@@ -1,6 +1,4 @@
-<div *ngIf="countries$ | async as countries">
-  <div style="display: block; width: 50%">
-    Guest Country
-    <country-card *ngFor="let country of countries" [country]="country"></country-card>
-  </div>
-</div>
+<br>
+<list *ngIf="countries$ | async as countries"
+      [items]="countries">
+</list>
