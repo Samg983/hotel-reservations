@@ -1,5 +1,4 @@
 <div *ngIf="countries$ | async as countries">
-  <!-- Display the list of countries once the data is fetched -->
   <div *ngFor="let country of countries"> {{country.countryName}} </div>
 </div>
 

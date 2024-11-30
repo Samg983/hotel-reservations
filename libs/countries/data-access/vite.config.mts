@@ -22,6 +22,7 @@ export default defineConfig({
     coverage: {
       reportsDirectory: '../../../coverage/libs/reservations/data-access',
       provider: 'v8',
+      exclude: ['src/lib/assets/country.mock-data.ts'],
     },
   },
 });

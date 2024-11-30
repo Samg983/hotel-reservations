@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { CountryApiService } from '../../../../libs/countries/data-access/src';
 import { CommonModule } from '@angular/common';
 import { Country } from '../../../../libs/countries/data-access/src/lib/models/country.model';
@@ -15,9 +14,9 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'hotel-reservations';
-
-  countryApiService = inject(CountryApiService);
   countries$: Observable<Country[]> | undefined;
+
+  constructor(private countryApiService: CountryApiService) {}
 
   ngOnInit() {
     this.countries$ = this.countryApiService.getCountries();
