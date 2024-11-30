@@ -18,6 +18,9 @@
       "@hotel-reservations/countries/data-access": [
         "libs/countries/data-access/src/index.ts"
       ],
+      "@hotel-reservations/feat-country-overview": [
+        "libs/countries/feat-country-overview/src/index.ts"
+      ],
       "@hotel-reservations/ui": ["libs/countries/ui/src/index.ts"]
     }
   },

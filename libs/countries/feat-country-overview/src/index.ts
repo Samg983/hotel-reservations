@@ -1,1 +1,1 @@
-export * from './lib/feat-country-overview/country-overview.component';
+export * from './lib/country-overview/country-overview.component';
