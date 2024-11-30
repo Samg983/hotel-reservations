@@ -1,15 +1,17 @@
-<div class="country-row ">
-  <div class="country-details">
-    <div class="xyz">
-      <div class="country-name font-bold">Belgium</div>
-      <div class="country-reservations">676</div>
+<div class="flex flex-row items-center bg-white p-3 font-light">
+  <div class="basis-4/5">
+    <div class="flex text-gray-600 ">
+      <div class="text-sm basis-1/2">{{ country.name }}</div>
+      <div class="text-sm text-right basis-1/2 content-end">{{ country.value.revenue }}</div>
     </div>
-    <div class="progress-bar">
-      <div class="progress" style="width: 80%;"></div>
+    <div class="mt-2">
+      <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+        <div class="progress h-2 bg-sky-800" style="width: 80%;"></div>
+      </div>
     </div>
   </div>
-  <div class="country-change">
-    <span class="evolution positive">+111</span>
-    <span>vs. Last Year</span>
+  <div class="basis-1/5 text-left flex flex-col px-5">
+    <span class="text-green-500 text-sm">+111</span>
+    <span class="text-gray-500 text-xs">vs. Last Year</span>
   </div>
 </div>
