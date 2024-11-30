@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CountryApiService } from '../../../../libs/countries/data-access/src';
+import {
+  Country,
+  CountryApiService,
+} from '@hotel-reservations/countries/data-access';
 import { CommonModule } from '@angular/common';
-import { Country } from '../../../../libs/countries/data-access/src/lib/models/country.model';
 import { Observable } from 'rxjs';
 
 @Component({

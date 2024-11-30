@@ -15,9 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hotel-reservations/data-access": [
-        "libs/reservations/data-access/src/index.ts"
-      ]
+      "@hotel-reservations/countries/data-access": [
+        "libs/countries/data-access/src/index.ts"
+      ],
+      "@hotel-reservations/ui": ["libs/countries/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
