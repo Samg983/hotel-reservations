@@ -1,4 +1,4 @@
 export interface Metric {
-  nr_of_rooms: number;
+  nrOfRooms: number;
   revenue: number;
 }

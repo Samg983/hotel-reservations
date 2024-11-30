@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { HttpClient } from '@angular/common/http';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { CountryApiService } from './country-api.service';
 import { CountryMapper } from '../mappers/country.mapper';
 import { Country } from '../models/country.model';
@@ -39,10 +39,10 @@ describe('CountryApiService', () => {
 
     const mappedCountry: Country = {
       displayCode: 'US',
-      countryName: 'United States',
+      name: 'United States',
       id: 'guest_country-HK',
-      value: { nr_of_rooms: 10, revenue: 1000 },
-      referenceValue: { nr_of_rooms: 5, revenue: 500 },
+      value: { nrOfRooms: 10, revenue: 1000 },
+      referenceValue: { nrOfRooms: 5, revenue: 500 },
     };
 
     vi.spyOn(httpClientMock, 'get').mockReturnValue(of(apiResponse));
@@ -56,6 +56,25 @@ describe('CountryApiService', () => {
       expect(countryMapperMock.map).toHaveBeenCalledWith(
         apiResponse.guest_country[0]
       );
+    });
+  });
+
+  it('should handle errors correctly', (done) => {
+    const errorResponse = new ErrorEvent('Network error');
+
+    vi.spyOn(httpClientMock, 'get').mockReturnValue(
+      throwError(() => new Error('Network error'))
+    );
+
+    //todo check test
+
+    countryApiService.getCountries().subscribe({
+      next: (countries) => {
+        expect(countries).toEqual([]);
+      },
+      error: (error) => {
+        expect(error).toBe(errorResponse);
+      },
     });
   });
 });

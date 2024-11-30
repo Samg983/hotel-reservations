@@ -1,1 +1,1 @@
-export * from './lib/ui/ui.component';
+export * from './lib/country-card/country-card.component';

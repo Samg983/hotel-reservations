@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { catchError, map, Observable } from 'rxjs';
 import { Country } from '../models/country.model';
 import { CountryMapper } from '../mappers/country.mapper';
 
@@ -16,7 +16,11 @@ export class CountryApiService {
   getCountries(): Observable<Country[]> {
     return this.http.get<{ guest_country: Country[] }>(this.apiUrl).pipe(
       map((response) => response.guest_country),
-      map((countries) => this.enrichCountries(countries))
+      map((countries) => this.enrichCountries(countries)),
+      catchError((error) => {
+        console.error('Error fetching countries:', error);
+        return [];
+      })
     );
   }
 

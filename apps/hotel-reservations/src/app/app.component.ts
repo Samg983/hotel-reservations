@@ -6,10 +6,11 @@ import {
 } from '@hotel-reservations/countries/data-access';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { CountryCardComponent } from '@hotel-reservations/ui';
 
 @Component({
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, CountryCardComponent],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

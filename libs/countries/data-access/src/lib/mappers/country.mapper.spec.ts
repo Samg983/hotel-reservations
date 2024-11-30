@@ -20,10 +20,10 @@ describe('CountryMapper', () => {
 
     const expectedCountry: Country = {
       displayCode: 'US',
-      countryName: COUNTRY_CODE_MAPPING['US'] || 'Unknown',
+      name: COUNTRY_CODE_MAPPING['US'] || 'Unknown',
       id: 'guest_country-HK',
-      value: { nr_of_rooms: 5, revenue: 200 },
-      referenceValue: { nr_of_rooms: 3, revenue: 10000 },
+      value: { nrOfRooms: 5, revenue: 200 },
+      referenceValue: { nrOfRooms: 3, revenue: 10000 },
     };
 
     const result = countryMapper.map(item);
@@ -41,10 +41,10 @@ describe('CountryMapper', () => {
 
     const expectedCountry: Country = {
       displayCode: 'XX',
-      countryName: 'Unknown',
+      name: 'Unknown',
       id: 'guest_country-HK',
-      value: { nr_of_rooms: 5, revenue: 200 },
-      referenceValue: { nr_of_rooms: 3, revenue: 10000 },
+      value: { nrOfRooms: 5, revenue: 200 },
+      referenceValue: { nrOfRooms: 3, revenue: 10000 },
     };
 
     const result = countryMapper.map(item);
