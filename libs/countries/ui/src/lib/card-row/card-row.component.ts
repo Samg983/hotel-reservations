@@ -17,4 +17,8 @@ export class CardRowComponent {
     negative: 'text-red-500 text-sm',
     neutral: 'text-gray-500 text-sm',
   };
+
+  get plusSign(): string {
+    return this.country.evolution.difference >= 0 ? '+' : '';
+  }
 }

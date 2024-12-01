@@ -1,4 +1,4 @@
-# HotelReservations
+# Hotel Reservations
 
 ## Run tasks
 

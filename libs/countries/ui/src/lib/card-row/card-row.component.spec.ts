@@ -27,4 +27,21 @@ describe('CardRowComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('plusSign', () => {
+    it('should return + when the difference is positive', () => {
+      component.country.evolution.difference = 1;
+      expect(component.plusSign).toBe('+');
+    });
+
+    it('should return plus when the difference is 0', () => {
+      component.country.evolution.difference = 0;
+      expect(component.plusSign).toBe('+');
+    });
+
+    it('should return an empty string when the difference is negative', () => {
+      component.country.evolution.difference = -1;
+      expect(component.plusSign).toBe('');
+    });
+  });
 });
