@@ -26,6 +26,12 @@ To run linting, testing and build all together, use:
 npx nx run-many --target=lint --all && npx nx run-many --target=test --all && npx nx run-many --target=build --all
 ```
 
+To run the storybook instance
+
+```sh
+npx nx run hotel-reservations:storybook
+```
+
 These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
 
 [More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
