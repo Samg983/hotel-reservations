@@ -23,6 +23,7 @@ module.exports = [
           ],
         },
       ],
+      '@angular-eslint/component-selector': 'off',
     },
   },
   {

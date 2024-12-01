@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { CountryMapper } from './country.mapper';
 import { COUNTRY_CODE_MAPPING } from '../assets/country-mapping';
 import { Country } from '../models/country.model';
-import { Trend } from '@hotel-reservations/countries/data-access';
+import { Trend } from '../models/evolution.model';
 
 describe('CountryMapper', () => {
   let countryMapper: CountryMapper;

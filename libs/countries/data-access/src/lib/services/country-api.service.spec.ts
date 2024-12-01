@@ -2,8 +2,9 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { CountryApiService } from './country-api.service';
-import { Country, Trend } from '@hotel-reservations/countries/data-access';
 import { CountryMapper } from '../mappers/country.mapper';
+import { Country } from '../models/country.model';
+import { Trend } from '../models/evolution.model';
 
 describe('CountryApiService', () => {
   let countryApiService: CountryApiService;
@@ -22,7 +23,7 @@ describe('CountryApiService', () => {
     countryApiService = new CountryApiService(httpClientMock, countryMapperMock);
   });
 
-  it('should fetch and map countries correctly', (done) => {
+  it('should fetch and map countries correctly', () => {
     const apiResponse = {
       guest_country: [
         {
@@ -53,7 +54,7 @@ describe('CountryApiService', () => {
     });
   });
 
-  it('should handle errors correctly', (done) => {
+  it('should handle errors correctly', () => {
     const errorResponse = new ErrorEvent('Network error');
 
     vi.spyOn(httpClientMock, 'get').mockReturnValue(throwError(() => new Error('Network error')));

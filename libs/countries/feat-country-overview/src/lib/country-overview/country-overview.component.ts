@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from '@hotel-reservations/ui';
 import { map, Observable, tap } from 'rxjs';
@@ -11,7 +11,7 @@ import { Country, CountryApiService, CountryUtil } from '@hotel-reservations/cou
   templateUrl: './country-overview.component.html',
   styleUrl: './country-overview.component.css',
 })
-export class CountryOverviewComponent {
+export class CountryOverviewComponent implements OnInit {
   countries$: Observable<Country[]> | undefined;
   maxNrOfReservations = 0;
 

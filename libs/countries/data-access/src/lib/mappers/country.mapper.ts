@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { COUNTRY_CODE_MAPPING } from '../assets/country-mapping';
-import { Country, Evolution, Metric, Trend } from '@hotel-reservations/countries/data-access';
 import { CountryRawApi } from '../models/country-api-raw.model';
+import { Country } from '../models/country.model';
+import { Evolution, Trend } from '../models/evolution.model';
+import { Metric } from '../models/metric.model';
 
 export interface Mapper<T> {
   map(item: any): T;

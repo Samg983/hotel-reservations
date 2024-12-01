@@ -1,4 +1,5 @@
-import { Country, Trend } from '@hotel-reservations/countries/data-access';
+import { Country } from '../models/country.model';
+import { Trend } from '../models/evolution.model';
 
 export const MOCK_COUNTRIES: Country[] = [
   {

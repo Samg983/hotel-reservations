@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { CountryUtil } from './country.util';
-import { Country, Trend } from '@hotel-reservations/countries/data-access';
 import { MOCK_COUNTRIES } from '../assets/country.mock-data';
+import { Country } from '../models/country.model';
+import { Trend } from '../models/evolution.model';
 
 describe('CountryUtil', () => {
   describe('getMaxNrOfReservations', () => {

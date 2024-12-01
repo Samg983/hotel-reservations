@@ -1,4 +1,5 @@
-import { Country, Evolution, Trend } from '@hotel-reservations/countries/data-access';
+import { Country } from '../models/country.model';
+import { Evolution, Trend } from '../models/evolution.model';
 
 export class CountryUtil {
   static getMaxNrOfReservations(countries: Country[]): number {

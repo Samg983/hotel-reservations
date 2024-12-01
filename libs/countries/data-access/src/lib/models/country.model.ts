@@ -1,4 +1,5 @@
-import { Evolution, Metric } from '@hotel-reservations/countries/data-access';
+import { Evolution } from './evolution.model';
+import { Metric } from './metric.model';
 
 export interface Country {
   id: string;

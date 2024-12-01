@@ -1,8 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CountryOverviewComponent } from './country-overview.component';
-import { Country, CountryApiService } from '@hotel-reservations/countries/data-access';
+import { Country, CountryApiService, MOCK_COUNTRIES } from '@hotel-reservations/countries/data-access';
 import { of } from 'rxjs';
-import { MOCK_COUNTRIES } from '../../../../data-access/src/lib/assets/country.mock-data';
 
 describe('CountryOverviewComponent', () => {
   let component: CountryOverviewComponent;
