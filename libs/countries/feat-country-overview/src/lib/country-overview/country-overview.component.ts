@@ -9,7 +9,6 @@ import { Country, CountryApiService, CountryUtil } from '@hotel-reservations/cou
   standalone: true,
   imports: [CommonModule, ListComponent],
   templateUrl: './country-overview.component.html',
-  styleUrl: './country-overview.component.css',
 })
 export class CountryOverviewComponent implements OnInit {
   countries$: Observable<Country[]> | undefined;
