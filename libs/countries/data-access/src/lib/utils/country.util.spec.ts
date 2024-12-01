@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { CountryUtil } from './country.util';
-import { ComputedCountry, Trend } from '@hotel-reservations/countries/data-access';
+import { Country, Trend } from '@hotel-reservations/countries/data-access';
 import { MOCK_COUNTRIES } from '../assets/country.mock-data';
 
 describe('CountryUtil', () => {
@@ -11,7 +11,7 @@ describe('CountryUtil', () => {
     });
 
     it('should return 0 if no reservations are present', () => {
-      const countries: ComputedCountry[] = [
+      const countries: Country[] = [
         {
           id: 'guest_country-BE',
           name: 'Belgium',

@@ -1,6 +1,6 @@
-import { ComputedCountry, Trend } from '@hotel-reservations/countries/data-access';
+import { Country, Trend } from '@hotel-reservations/countries/data-access';
 
-export const MOCK_COUNTRIES: ComputedCountry[] = [
+export const MOCK_COUNTRIES: Country[] = [
   {
     id: 'guest_country-BE',
     name: 'Belgium',

@@ -1,9 +1,6 @@
-import { Metric } from './metric.model';
+import { CountryApi, Evolution } from '@hotel-reservations/countries/data-access';
 
-export interface Country {
-  id: string;
-  displayCode: string;
-  name?: string;
-  referenceValue: Metric;
-  value: Metric;
+export interface Country extends CountryApi {
+  evolution: Evolution;
+  progressbarValue?: number;
 }

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { CountryApiService } from './country-api.service';
 import { CountryMapper } from '../mappers/country.mapper';
-import { Country } from '../models/country.model';
+import { CountryApi } from '../models/country.model';
 
 describe('CountryApiService', () => {
   let countryApiService: CountryApiService;
@@ -19,10 +19,7 @@ describe('CountryApiService', () => {
       map: vi.fn(),
     } as CountryMapper;
 
-    countryApiService = new CountryApiService(
-      httpClientMock,
-      countryMapperMock
-    );
+    countryApiService = new CountryApiService(httpClientMock, countryMapperMock);
   });
 
   it('should fetch and map countries correctly', (done) => {
@@ -37,7 +34,7 @@ describe('CountryApiService', () => {
       ],
     };
 
-    const mappedCountry: Country = {
+    const mappedCountry: CountryApi = {
       displayCode: 'US',
       name: 'United States',
       id: 'guest_country-HK',
@@ -50,21 +47,15 @@ describe('CountryApiService', () => {
 
     countryApiService.getCountries().subscribe((countries) => {
       expect(countries).toEqual([mappedCountry]);
-      expect(httpClientMock.get).toHaveBeenCalledWith(
-        countryApiService['apiUrl']
-      );
-      expect(countryMapperMock.map).toHaveBeenCalledWith(
-        apiResponse.guest_country[0]
-      );
+      expect(httpClientMock.get).toHaveBeenCalledWith(countryApiService['apiUrl']);
+      expect(countryMapperMock.map).toHaveBeenCalledWith(apiResponse.guest_country[0]);
     });
   });
 
   it('should handle errors correctly', (done) => {
     const errorResponse = new ErrorEvent('Network error');
 
-    vi.spyOn(httpClientMock, 'get').mockReturnValue(
-      throwError(() => new Error('Network error'))
-    );
+    vi.spyOn(httpClientMock, 'get').mockReturnValue(throwError(() => new Error('Network error')));
 
     //todo check test
 

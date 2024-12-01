@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { COUNTRY_CODE_MAPPING } from '../assets/country-mapping';
-import {
-  ComputedCountry,
-  Evolution,
-  Metric,
-  Trend,
-} from '@hotel-reservations/countries/data-access';
+import { Country, Evolution, Metric, Trend } from '@hotel-reservations/countries/data-access';
+import { CountryRawApi } from '../models/country-api-raw.model';
 
 export interface Mapper<T> {
   map(item: any): T;
@@ -14,8 +10,8 @@ export interface Mapper<T> {
 @Injectable({
   providedIn: 'root',
 })
-export class CountryMapper implements Mapper<ComputedCountry> {
-  map(item: any): ComputedCountry {
+export class CountryMapper implements Mapper<Country> {
+  map(item: CountryRawApi): Country {
     return {
       displayCode: item.display_code,
       name: COUNTRY_CODE_MAPPING[item.display_code] || 'Unknown',
@@ -29,6 +25,6 @@ export class CountryMapper implements Mapper<ComputedCountry> {
         revenue: item.reference_value.revenue,
       } as Metric,
       evolution: { difference: 0, trend: Trend.NEUTRAL } as Evolution,
-    } as ComputedCountry;
+    } as Country;
   }
 }

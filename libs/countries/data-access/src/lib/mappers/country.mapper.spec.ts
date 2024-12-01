@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { CountryMapper } from './country.mapper';
 import { COUNTRY_CODE_MAPPING } from '../assets/country-mapping';
-import { Country } from '../models/country.model';
+import { CountryApi } from '../models/country.model';
 
 describe('CountryMapper', () => {
   let countryMapper: CountryMapper;
@@ -18,7 +18,7 @@ describe('CountryMapper', () => {
       reference_value: { nr_of_rooms: 3, revenue: 10000 },
     };
 
-    const expectedCountry: Country = {
+    const expectedCountry: CountryApi = {
       displayCode: 'US',
       name: COUNTRY_CODE_MAPPING['US'] || 'Unknown',
       id: 'guest_country-HK',
@@ -39,7 +39,7 @@ describe('CountryMapper', () => {
       reference_value: { nr_of_rooms: 3, revenue: 10000 },
     };
 
-    const expectedCountry: Country = {
+    const expectedCountry: CountryApi = {
       displayCode: 'XX',
       name: 'Unknown',
       id: 'guest_country-HK',
