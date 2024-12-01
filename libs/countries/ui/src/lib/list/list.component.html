@@ -2,8 +2,8 @@
   <h2 class="text-sm font-medium text-gray-800 p-3">{{ title }}</h2>
   <div class="overflow-y-auto max-h-[300px] ">
     <card-row
-      *ngFor="let country of items"
-      [country]="country">
+      *ngFor="let item of items"
+      [country]="item">
     </card-row>
   </div>
 </div>

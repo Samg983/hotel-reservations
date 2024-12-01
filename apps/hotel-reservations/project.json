@@ -90,6 +90,55 @@
         "staticFilePath": "dist/apps/hotel-reservations/browser",
         "spa": true
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/hotel-reservations/.storybook",
+        "browserTarget": "hotel-reservations:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/hotel-reservations",
+        "configDir": "apps/hotel-reservations/.storybook",
+        "browserTarget": "hotel-reservations:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c apps/hotel-reservations/.storybook --url=http://localhost:4400"
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build-storybook"],
+      "options": {
+        "buildTarget": "hotel-reservations:build-storybook",
+        "staticFilePath": "dist/storybook/hotel-reservations",
+        "spa": true
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "hotel-reservations:build-storybook:ci"
+        }
+      }
     }
   }
 }
