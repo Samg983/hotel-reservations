@@ -7,7 +7,6 @@ import { Country } from '@hotel-reservations/countries/data-access';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './card-row.component.html',
-  styleUrl: './card-row.component.scss',
 })
 export class CardRowComponent {
   @Input() country!: Country;

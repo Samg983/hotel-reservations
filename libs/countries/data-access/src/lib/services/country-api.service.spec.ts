@@ -59,8 +59,6 @@ describe('CountryApiService', () => {
 
     vi.spyOn(httpClientMock, 'get').mockReturnValue(throwError(() => new Error('Network error')));
 
-    //todo check test
-
     countryApiService.getCountries().subscribe({
       next: (countries) => {
         expect(countries).toEqual([]);
