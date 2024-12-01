@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Country } from '@hotel-reservations/countries/data-access';
+import { ComputedCountry } from '@hotel-reservations/countries/data-access';
 import { CardRowComponent } from '../card-row/card-row.component';
 
 @Component({
@@ -12,5 +12,5 @@ import { CardRowComponent } from '../card-row/card-row.component';
 })
 export class ListComponent {
   @Input() title = 'Guest Country';
-  @Input() items: Country[] = [];
+  @Input() items: ComputedCountry[] = [];
 }

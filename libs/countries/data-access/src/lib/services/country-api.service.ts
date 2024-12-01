@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable } from 'rxjs';
-import { Country } from '../models/country.model';
 import { CountryMapper } from '../mappers/country.mapper';
+import { ComputedCountry } from '../models/computed-country.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,18 +13,20 @@ export class CountryApiService {
 
   constructor(private http: HttpClient, private countryMapper: CountryMapper) {}
 
-  getCountries(): Observable<Country[]> {
-    return this.http.get<{ guest_country: Country[] }>(this.apiUrl).pipe(
-      map((response) => response.guest_country),
-      map((countries) => this.enrichCountries(countries)),
-      catchError((error) => {
-        console.error('Error fetching countries:', error);
-        return [];
-      })
-    );
+  getCountries(): Observable<ComputedCountry[]> {
+    return this.http
+      .get<{ guest_country: ComputedCountry[] }>(this.apiUrl)
+      .pipe(
+        map((response) => response.guest_country),
+        map((countries) => this.enrichCountries(countries)),
+        catchError((error) => {
+          console.error('Error fetching countries:', error);
+          return [];
+        })
+      );
   }
 
-  private enrichCountries(countries: Country[]): Country[] {
+  private enrichCountries(countries: ComputedCountry[]): ComputedCountry[] {
     return countries.map((country) => this.countryMapper.map(country));
   }
 }

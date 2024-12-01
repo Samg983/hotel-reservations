@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Country } from '@hotel-reservations/countries/data-access';
+import { ComputedCountry } from '@hotel-reservations/countries/data-access';
 
 @Component({
   selector: 'card-row',
@@ -10,6 +10,11 @@ import { Country } from '@hotel-reservations/countries/data-access';
   styleUrl: './card-row.component.scss',
 })
 export class CardRowComponent {
-  @Input() country!: Country;
-  protected readonly Math = Math;
+  @Input() country!: ComputedCountry;
+
+  colorVariants = {
+    green: 'text-green-600',
+    red: 'text-red-500',
+    gray: 'text-gray-500',
+  };
 }
