@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from '@hotel-reservations/ui';
 import { map, Observable, tap } from 'rxjs';
-import { Country, CountryApiService } from '@hotel-reservations/countries/data-access';
-import { CountryUtil } from '../../../../data-access/src/lib/utils/country.util';
+import { Country, CountryApiService, CountryUtil } from '@hotel-reservations/countries/data-access';
 
 @Component({
   selector: 'country-overview',
@@ -23,12 +22,12 @@ export class CountryOverviewComponent {
       tap((countries) => {
         this.maxNrOfReservations = CountryUtil.getMaxNrOfReservations(countries);
       }),
-      map((countries) => this.mapToComputedCountry(countries)),
-      map((computedCountries) => this.sortCountries(computedCountries))
+      map((countries) => this.enrichCountries(countries)),
+      map((countries) => this.sortCountries(countries))
     );
   }
 
-  private mapToComputedCountry(countries: Country[]): Country[] {
+  private enrichCountries(countries: Country[]): Country[] {
     return countries.map((country) => {
       return {
         ...country,

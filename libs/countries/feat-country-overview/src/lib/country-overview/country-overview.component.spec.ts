@@ -1,21 +1,44 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { CountryOverviewComponent } from './country-overview.component';
+import { Country, CountryApiService } from '@hotel-reservations/countries/data-access';
+import { of } from 'rxjs';
+import { MOCK_COUNTRIES } from '../../../../data-access/src/lib/assets/country.mock-data';
 
-describe('FeatCountryOverviewComponent', () => {
+describe('CountryOverviewComponent', () => {
   let component: CountryOverviewComponent;
-  let fixture: ComponentFixture<CountryOverviewComponent>;
+  let countryApiService: CountryApiService;
+  const mockCountries: Country[] = MOCK_COUNTRIES;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [CountryOverviewComponent],
-    }).compileComponents();
+  beforeEach(() => {
+    countryApiService = {
+      getCountries: vi.fn(),
+    } as unknown as CountryApiService;
 
-    fixture = TestBed.createComponent(CountryOverviewComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    component = new CountryOverviewComponent(countryApiService);
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should fetch countries on init', () => {
+    vi.spyOn(countryApiService, 'getCountries').mockReturnValue(of(mockCountries));
+
+    component.ngOnInit();
+
+    component.countries$?.subscribe((countries) => {
+      expect(countries.length).toBe(2);
+    });
+  });
+
+  it('should sort countries correctly', () => {
+    vi.spyOn(countryApiService, 'getCountries').mockReturnValue(of(mockCountries));
+
+    component.ngOnInit();
+
+    component.countries$?.subscribe((countries) => {
+      expect(countries[0].displayCode).toBe('DE');
+      expect(countries[1].displayCode).toBe('BE');
+    });
   });
 });

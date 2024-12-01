@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable } from 'rxjs';
 import { CountryMapper } from '../mappers/country.mapper';
 import { Country } from '../models/country.model';
-import { CountryApi } from '../models/country-api.model';
+import { CountryRawApi } from '../models/country-api-raw.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,7 @@ export class CountryApiService {
   constructor(private http: HttpClient, private countryMapper: CountryMapper) {}
 
   getCountries(): Observable<Country[]> {
-    return this.http.get<{ guest_country: CountryApi[] }>(this.apiUrl).pipe(
+    return this.http.get<{ guest_country: CountryRawApi[] }>(this.apiUrl).pipe(
       map((response) => response.guest_country),
       map((countries) => this.enrichCountries(countries)),
       catchError((error) => {
@@ -24,7 +24,7 @@ export class CountryApiService {
     );
   }
 
-  private enrichCountries(countries: CountryApi[]): Country[] {
+  private enrichCountries(countries: CountryRawApi[]): Country[] {
     return countries.map((country) => this.countryMapper.map(country));
   }
 }

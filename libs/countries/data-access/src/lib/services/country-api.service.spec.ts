@@ -2,8 +2,8 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { HttpClient } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { CountryApiService } from './country-api.service';
+import { Country, Trend } from '@hotel-reservations/countries/data-access';
 import { CountryMapper } from '../mappers/country.mapper';
-import { CountryApi } from '../models/country.model';
 
 describe('CountryApiService', () => {
   let countryApiService: CountryApiService;
@@ -34,12 +34,13 @@ describe('CountryApiService', () => {
       ],
     };
 
-    const mappedCountry: CountryApi = {
+    const mappedCountry: Country = {
       displayCode: 'US',
       name: 'United States',
       id: 'guest_country-HK',
       value: { nrOfRooms: 10, revenue: 1000 },
       referenceValue: { nrOfRooms: 5, revenue: 500 },
+      evolution: { difference: 0, trend: Trend.NEUTRAL },
     };
 
     vi.spyOn(httpClientMock, 'get').mockReturnValue(of(apiResponse));

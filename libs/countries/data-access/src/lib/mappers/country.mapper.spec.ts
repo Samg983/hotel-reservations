@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { CountryMapper } from './country.mapper';
 import { COUNTRY_CODE_MAPPING } from '../assets/country-mapping';
-import { CountryApi } from '../models/country.model';
+import { Country } from '../models/country.model';
+import { Trend } from '@hotel-reservations/countries/data-access';
 
 describe('CountryMapper', () => {
   let countryMapper: CountryMapper;
@@ -18,12 +19,13 @@ describe('CountryMapper', () => {
       reference_value: { nr_of_rooms: 3, revenue: 10000 },
     };
 
-    const expectedCountry: CountryApi = {
+    const expectedCountry: Country = {
       displayCode: 'US',
       name: COUNTRY_CODE_MAPPING['US'] || 'Unknown',
       id: 'guest_country-HK',
       value: { nrOfRooms: 5, revenue: 200 },
       referenceValue: { nrOfRooms: 3, revenue: 10000 },
+      evolution: { difference: 0, trend: Trend.NEUTRAL },
     };
 
     const result = countryMapper.map(item);
@@ -39,12 +41,13 @@ describe('CountryMapper', () => {
       reference_value: { nr_of_rooms: 3, revenue: 10000 },
     };
 
-    const expectedCountry: CountryApi = {
+    const expectedCountry: Country = {
       displayCode: 'XX',
       name: 'Unknown',
       id: 'guest_country-HK',
       value: { nrOfRooms: 5, revenue: 200 },
       referenceValue: { nrOfRooms: 3, revenue: 10000 },
+      evolution: { difference: 0, trend: Trend.NEUTRAL },
     };
 
     const result = countryMapper.map(item);
