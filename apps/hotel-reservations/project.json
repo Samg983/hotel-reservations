@@ -8,12 +8,16 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/hotel-reservations",
         "index": "apps/hotel-reservations/src/index.html",
         "browser": "apps/hotel-reservations/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/hotel-reservations/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
@@ -22,7 +26,9 @@
             "input": "apps/hotel-reservations/public"
           }
         ],
-        "styles": ["apps/hotel-reservations/src/styles.scss"],
+        "styles": [
+          "apps/hotel-reservations/src/styles.scss"
+        ],
         "scripts": [],
         "server": "apps/hotel-reservations/src/main.server.ts",
         "prerender": true,
@@ -66,18 +72,14 @@
       },
       "defaultConfiguration": "development"
     },
-    "extract-i18n": {
-      "executor": "@angular-devkit/build-angular:extract-i18n",
-      "options": {
-        "buildTarget": "hotel-reservations:build"
-      }
-    },
     "lint": {
       "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/hotel-reservations/jest.config.ts"
       }
@@ -107,7 +109,9 @@
     },
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
-      "outputs": ["{options.outputDir}"],
+      "outputs": [
+        "{options.outputDir}"
+      ],
       "options": {
         "outputDir": "dist/storybook/hotel-reservations",
         "configDir": "apps/hotel-reservations/.storybook",
@@ -128,7 +132,9 @@
     },
     "static-storybook": {
       "executor": "@nx/web:file-server",
-      "dependsOn": ["build-storybook"],
+      "dependsOn": [
+        "build-storybook"
+      ],
       "options": {
         "buildTarget": "hotel-reservations:build-storybook",
         "staticFilePath": "dist/storybook/hotel-reservations",
