@@ -247,5 +247,5 @@ export const COUNTRY_CODE_MAPPING: { [key: string]: string } = {
   YT: 'Mayotte',
   ZA: 'South Africa',
   ZM: 'Zambia',
-  ZW: 'Zimbabwe'
+  ZW: 'Zimbabwe',
 };

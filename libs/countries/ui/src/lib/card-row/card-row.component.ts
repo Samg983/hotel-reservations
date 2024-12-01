@@ -12,9 +12,9 @@ import { ComputedCountry } from '@hotel-reservations/countries/data-access';
 export class CardRowComponent {
   @Input() country!: ComputedCountry;
 
-  colorVariants = {
-    green: 'text-green-600',
-    red: 'text-red-500',
-    gray: 'text-gray-500',
+  colorVariants: { [key: string]: string } = {
+    positive: 'text-green-600 text-sm',
+    negative: 'text-red-500 text-sm',
+    neutral: 'text-gray-500 text-sm',
   };
 }

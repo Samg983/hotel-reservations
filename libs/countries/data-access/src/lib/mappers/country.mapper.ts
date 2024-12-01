@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { COUNTRY_CODE_MAPPING } from '../assets/country-mapping';
 import {
   ComputedCountry,
+  Evolution,
   Metric,
+  Trend,
 } from '@hotel-reservations/countries/data-access';
 
 export interface Mapper<T> {
@@ -26,7 +28,7 @@ export class CountryMapper implements Mapper<ComputedCountry> {
         nrOfRooms: item.reference_value.nr_of_rooms,
         revenue: item.reference_value.revenue,
       } as Metric,
-      evolution: { difference: 0, className: '' },
+      evolution: { difference: 0, trend: Trend.NEUTRAL } as Evolution,
     } as ComputedCountry;
   }
 }
