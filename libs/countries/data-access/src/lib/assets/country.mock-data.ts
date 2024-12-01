@@ -1,12 +1,13 @@
-import { Country } from '../models/country.model';
+import { ComputedCountry, Trend } from '@hotel-reservations/countries/data-access';
 
-export const MOCK_COUNTRIES: Country[] = [
+export const MOCK_COUNTRIES: ComputedCountry[] = [
   {
     id: 'guest_country-BE',
     name: 'Belgium',
     referenceValue: { nrOfRooms: 100, revenue: 5000 },
     displayCode: 'BE',
     value: { nrOfRooms: 70, revenue: 3500 },
+    evolution: { difference: 30, trend: Trend.POSITIVE },
   },
   {
     id: 'guest_country-DE',
@@ -14,5 +15,6 @@ export const MOCK_COUNTRIES: Country[] = [
     referenceValue: { nrOfRooms: 120, revenue: 6000 },
     displayCode: 'DE',
     value: { nrOfRooms: 80, revenue: 4000 },
+    evolution: { difference: -5, trend: Trend.NEGATIVE },
   },
 ];
