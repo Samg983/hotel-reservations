@@ -37,11 +37,11 @@ export class CountryOverviewComponent implements OnInit {
   }
 
   private sortCountries(countries: Country[]): Country[] {
-    return countries.sort((a, b) => {
-      if (b.value.nrOfRooms !== a.value.nrOfRooms) {
-        return b.value.nrOfRooms - a.value.nrOfRooms;
+    return countries.sort((itemA, itemB) => {
+      if (itemB.value.nrOfRooms !== itemA.value.nrOfRooms) {
+        return itemB.value.nrOfRooms - itemA.value.nrOfRooms;
       }
-      return b.evolution.difference - a.evolution.difference;
+      return itemB.evolution.difference - itemA.evolution.difference;
     });
   }
 }
